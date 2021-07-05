@@ -36,9 +36,28 @@ nfpms:
   overrides:
       rpm:
         file_name_template: "{{ .ProjectName }}-{{ .Version }}-{{.Release}}.{{ .Arch }}"
+      deb:
+        file_name_template: "{{ .ProjectName }}_{{ .Version }}-{{.Release}}_{{ .Arch }}"
   formats:
   - deb
   - rpm
+
+brews:
+  - tap:
+      owner: jmainguy
+      name: homebrew-tap
+    folder: Formula
+    homepage: https://github.com/Jmainguy/indent
+    description: "Ident from a file to stdout using spaces"
+    license: "GPL-2.0"
+    commit_author:
+      name: Jonathan Mainguy
+      email: jon@soh.re
+    test: |
+      system "#{bin}/indent"
+    install: |
+      bin.install "indent"
+
 checksum:
   name_template: 'checksums.txt'
 changelog:

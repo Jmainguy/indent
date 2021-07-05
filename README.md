@@ -3,7 +3,6 @@
 [![Release](https://img.shields.io/github/release/Jmainguy/indent.svg?style=flat-square)](https://github.com/Jmainguy/indent/releases/latest)
 [![Coverage Status](https://coveralls.io/repos/github/Jmainguy/indent/badge.svg?branch=main)](https://coveralls.io/github/Jmainguy/indent?branch=main)
 
-# indent
 A tool to indent a file to stdout using spaces.
 
 ## Usage
@@ -19,6 +18,14 @@ indent --filename ~/tmp/logstash/syslog/values.yaml --indent 8 >> templates/sysl
 
 ## PreBuilt Binaries
 Grab Binaries from [The Releases Page](https://github.com/Jmainguy/indent/releases)
+
+## Install
+
+### Homebrew
+
+```/bin/bash
+brew install jmainguy/tap/indent
+```
 
 ## Build
 ```/bin/bash

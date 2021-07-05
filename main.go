@@ -4,7 +4,9 @@ import (
 	"bufio"
 	"flag"
 	"fmt"
+	"math"
 	"os"
+	"regexp"
 	"strings"
 )
 
@@ -34,8 +36,22 @@ func main() {
 
 	file.Close()
 
-	indention := strings.Repeat(" ", *indentPtr)
-	for _, line := range text {
-		fmt.Printf("%s%s\n", indention, line)
+	// Indent
+	indention := strings.Repeat(" ", int(math.Abs(float64(*indentPtr))))
+	if *indentPtr < 0 {
+		for _, line := range text {
+			indent := regexp.MustCompile(fmt.Sprintf(`^%s`, indention))
+			newLineArray := indent.Split(line, 2)
+			if len(newLineArray) > 1 {
+				fmt.Printf("%s\n", newLineArray[1])
+			} else {
+				fmt.Printf("%s\n", line)
+			}
+		}
+
+	} else {
+		for _, line := range text {
+			fmt.Printf("%s%s\n", indention, line)
+		}
 	}
 }
